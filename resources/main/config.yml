@@ -1,0 +1,9 @@
+# RaLP Configuration
+settings:
+  # Available languages: en_us, ru_ru, de_de, es_es, pt_pt, fr_fr
+  default-language: en_us
+  min-password-length: 6
+  max-login-attempts: 3
+  block-time-after-fail: 300
+  session-duration: 30
+  enable-auto-login: true
