@@ -360,3 +360,35 @@ tr_tr:
     not-logged-in: "§cÖnce giriş yapmalısınız!"
   commands:
     reload-success: "§aYapılandırma başarıyla yeniden yüklendi!"
+pl_pl:
+  prefix: "§8[§6RaLP§8] "
+  ralp:
+    usage: "§cUżycie: /ralp reload"
+  register:
+    success: "§aPomyślnie zarejestrowano i zalogowano!"
+    passwords-not-match: "§cHasła nie pasują do siebie!"
+    too-short: "§cHasło musi mieć co najmniej {min_length} znaków!"
+    usage: "§cUżycie: /register <hasło> <powtórz hasło>"
+    already-registered: "§cJesteś już zarejestrowany!"
+  login:
+    success: "§aPomyślnie zalogowano!"
+    wrong-password: "§cNieprawidłowe hasło!"
+    not-registered: "§cNajpierw się zarejestruj!"
+    usage: "§cUżycie: /login <hasło>"
+    attempts-left: "§cPozostało {attempts} prób przed zablokowaniem!"
+    blocked: "§cZostałeś zablokowany na {time} sekund!"
+  changepassword:
+    success: "§aHasło zostało zmienione! Zaloguj się ponownie."
+    error: "§cNie udało się zmienić hasła. Spróbuj ponownie."
+    usage: "§cUżycie: /changepassword <Stare hasło> <Nowe hasło> <Powtórz nowe hasło>"
+  autologin:
+    enabled: "§aAutomatyczne logowanie włączone!"
+    disabled: "§cAutomatyczne logowanie wyłączone!"
+    success: "§aZostałeś automatycznie zalogowany"
+    usage: "§cUżycie: /autologin <on|off>"
+  errors:
+    player-only: "§cTa komenda jest tylko dla graczy!"
+    no-permission: "§cNie masz uprawnień!"
+    not-logged-in: "§cNajpierw się zaloguj!"
+  commands:
+    reload-success: "§aKonfiguracja przeładowana pomyślnie!"

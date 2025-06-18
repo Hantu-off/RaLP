@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "net.hantu"
-version = "0.5"
+version = "1.21.5-0.6"
 
 repositories {
     mavenCentral()

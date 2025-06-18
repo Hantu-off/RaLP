@@ -1,6 +1,6 @@
 # RaLP Configuration
 settings:
-  # Available languages: en_us, ru_ru, de_de, es_es, pt_pt, fr_fr, tr_tr, it_it, ko_kr, ja_jp, zh_cn
+  # Available languages: en_us, ru_ru, de_de, es_es, pt_pt, fr_fr, tr_tr, it_it, ko_kr, ja_jp, zh_cn, pl_pl
   default-language: en_us
   min-password-length: 3
   max-login-attempts: 3
