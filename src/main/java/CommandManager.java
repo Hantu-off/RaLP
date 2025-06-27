@@ -16,6 +16,7 @@ public class CommandManager implements TabCompleter {
         plugin.getCommand("login").setExecutor(new LoginCommand(plugin));
         plugin.getCommand("l").setExecutor(new LoginCommand(plugin));
         plugin.getCommand("autologin").setExecutor(new AutoLoginCommand(plugin));
+        plugin.getCommand("changepassword").setExecutor(new ChangePasswordCommand(plugin));
         plugin.getCommand("ralp").setExecutor(new RalpCommand(plugin));
         plugin.getCommand("ralp").setTabCompleter(this);
         plugin.getServer().getPluginManager().registerEvents(plugin.getAuthListener(), plugin);

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "net.hantu"
-version = "1.21.5-0.6"
+version = "1.21.6-0.6.1"
 
 repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.21.5-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.21.6-R0.1-SNAPSHOT")
     implementation("org.mindrot:jbcrypt:0.4")
 }
 
