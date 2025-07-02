@@ -1,0 +1,404 @@
+en_us:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Usage: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>You have successfully registered and logged in!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Passwords do not match!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>Password must be at least {min_length} characters!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Usage: /register <Password> <Repeat password></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>You are already registered!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>You have successfully logged in!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Wrong password!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>You need to register first!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Usage: /login <Password></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>You have {attempts} attempts left before blocking!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>You are blocked for {time} seconds!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Password changed successfully! Please login again.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Failed to change password. Please try again.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Usage: /changepassword <Old password> <New password> <Repeat new password></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Auto-login enabled!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Auto-login disabled!</gradient>"
+    success: "<gradient:#00FF00:#006400>You have been automatically logged in</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Usage: /autologin <on|off></gradient>"
+  unreg:
+    success: "<gradient:#00FF00:#006400>Successfully unregistered player {player}!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Player is not registered!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Usage: /unreg <player></gradient>"
+    player-notify: "<gradient:#FF0000:#8B0000>Your registration has been removed by an administrator. Please register again.</gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>This command is for players only!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>You don't have permission!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>You must login first!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Configuration reloaded successfully!</gradient>"
+
+ru_ru:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Используйте: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Вы успешно зарегистрированы и вошли в систему!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Пароли не совпадают!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>Пароль должен быть не короче {min_length} символов!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Используйте: /register <Пароль> <Повторите пароль></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Вы уже зарегистрированы!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Вы успешно вошли в систему!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Неверный пароль!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Сначала зарегистрируйтесь!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Используйте: /login <Пароль></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>У вас осталось {attempts} попыток перед блокировкой!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>Вы заблокированы на {time} секунд!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Пароль успешно изменен! Пожалуйста, войдите снова.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Не удалось изменить пароль. Попробуйте еще раз.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Используйте: /changepassword <Старый пароль> <Новый пароль> <Повторите новый пароль></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Автовход включен!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Автовход выключен!</gradient>"
+    success: "<gradient:#00FF00:#006400>Вы были автоматически авторизованы</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Используйте: /autologin <on|off></gradient>"
+  unreg:
+    success: "<gradient:#00FF00:#006400>Регистрация игрока {player} успешно удалена!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Игрок не зарегистрирован!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Используйте: /unreg <игрок></gradient>"
+    player-notify: "<gradient:#FF0000:#8B0000>Ваша регистрация была удалена администратором. Пожалуйста, зарегистрируйтесь снова.</gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Эта команда только для игроков!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>У вас нет прав!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Вы должны сначала войти в аккаунт!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Конфигурация перезагружена!</gradient>"
+
+de_de:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Verwendung: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Sie haben sich erfolgreich registriert und sind eingeloggt!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Passwörter stimmen nicht überein!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>Passwort muss mindestens {min_length} Zeichen lang sein!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Verwendung: /register <Passwort> <Passwort wiederholen></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Sie sind bereits registriert!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Sie haben sich erfolgreich eingeloggt!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Falsches Passwort!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Sie müssen sich zuerst registrieren!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Verwendung: /login <Passwort></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>Sie haben noch {attempts} Versuche vor der Sperrung!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>Sie sind für {time} Sekunden gesperrt!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Passwort erfolgreich geändert! Bitte erneut einloggen.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Passwortänderung fehlgeschlagen. Bitte versuchen Sie es erneut.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Verwendung: /changepassword <Altes Passwort> <Neues Passwort> <Neues Passwort wiederholen></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Automatischer Login aktiviert!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Automatischer Login deaktiviert!</gradient>"
+    success: "<gradient:#00FF00:#006400>Sie wurden automatisch eingeloggt</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Verwendung: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Dieser Befehl ist nur für Spieler!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>Sie haben keine Berechtigung!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Sie müssen sich zuerst einloggen!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Konfiguration erfolgreich neu geladen!</gradient>"
+
+es_es:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Uso: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>¡Te has registrado e iniciado sesión correctamente!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>¡Las contraseñas no coinciden!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>¡La contraseña debe tener al menos {min_length} caracteres!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /register <contraseña> <repetir contraseña></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>¡Ya estás registrado!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>¡Has iniciado sesión correctamente!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>¡Contraseña incorrecta!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>¡Primero debes registrarte!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /login <contraseña></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>¡Te quedan {attempts} intentos antes del bloqueo!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>¡Estás bloqueado por {time} segundos!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>¡Contraseña cambiada con éxito! Por favor inicia sesión nuevamente.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Error al cambiar la contraseña. Inténtalo de nuevo.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /changepassword <Contraseña antigua> <Nueva contraseña> <Repetir nueva contraseña></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>¡Auto-login activado!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>¡Auto-login desactivado!</gradient>"
+    success: "<gradient:#00FF00:#006400>Has iniciado sesión automáticamente</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>¡Este comando solo puede ser usado por jugadores!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>¡No tienes permiso!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>¡Primero debes iniciar sesión!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>¡Configuración recargada correctamente!</gradient>"
+
+pt_pt:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Utilização: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Registo e login efetuados com sucesso!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>As palavras-passe não coincidem!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>A palavra-passe deve ter no mínimo {min_length} caracteres!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilização: /register <palavra-passe> <confirmar palavra-passe></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Já estás registado!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Login efetuado com sucesso!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Palavra-passe incorreta!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Primeiro tens de te registar!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilização: /login <palavra-passe></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>Ainda tens {attempts} tentativas antes de seres bloqueado!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>Estás bloqueado por {time} segundos!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Palavra-passe alterada com sucesso! Por favor faz login novamente.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Falha ao alterar a palavra-passe. Por favor tenta novamente.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilização: /changepassword <Palavra-passe antiga> <Nova palavra-passe> <Repetir nova palavra-passe></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Login automático ativado!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Login automático desativado!</gradient>"
+    success: "<gradient:#00FF00:#006400>Foste automaticamente autenticado</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilização: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Este comando só pode ser usado por jogadores!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>Não tens permissão!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Primeiro tens de fazer login!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Configuração recarregada com sucesso!</gradient>"
+
+fr_fr:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Utilisation : /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Inscription et connexion réussies !</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Les mots de passe ne correspondent pas !</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>Le mot de passe doit contenir au moins {min_length} caractères !</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilisation : /register <motdepasse> <confirmer></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Vous êtes déjà inscrit !</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Connexion réussie !</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Mot de passe incorrect !</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Vous devez d'abord vous inscrire !</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilisation : /login <motdepasse></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>Il vous reste {attempts} tentatives avant blocage !</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>Vous êtes bloqué pour {time} secondes !</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Mot de passe changé avec succès ! Veuillez vous reconnecter.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Échec du changement de mot de passe. Veuillez réessayer.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilisation : /changepassword <Ancien mot de passe> <Nouveau mot de passe> <Répéter nouveau mot de passe></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Connexion automatique activée !</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Connexion automatique désactivée !</gradient>"
+    success: "<gradient:#00FF00:#006400>Connexion automatique réussie</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Utilisation : /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Cette commande est réservée aux joueurs !</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>Permission refusée !</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Vous devez d'abord vous connecter !</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Configuration rechargée avec succès !</gradient>"
+
+zh_cn:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>用法: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>您已成功注册并登录！</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>密码不匹配！</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>密码长度至少为 {min_length} 个字符！</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>用法: /register <密码> <重复密码></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>您已经注册过了！</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>登录成功！</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>密码错误！</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>请先注册！</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>用法: /login <密码></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>您还有 {attempts} 次尝试机会！</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>您已被封禁 {time} 秒！</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>密码修改成功！请重新登录。</gradient>"
+    error: "<gradient:#FF0000:#8B0000>密码修改失败，请重试。</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>用法: /changepassword <旧密码> <新密码> <重复新密码></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>自动登录已启用！</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>自动登录已禁用！</gradient>"
+    success: "<gradient:#00FF00:#006400>您已自动登录</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>用法: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>该命令只能由玩家执行！</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>您没有权限！</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>请先登录！</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>配置重载成功！</gradient>"
+
+ja_jp:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>使い方: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>登録とログインに成功しました！</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>パスワードが一致しません！</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>パスワードは{min_length}文字以上で入力してください！</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>使い方: /register <パスワード> <パスワード確認></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>既に登録されています！</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>ログインに成功しました！</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>パスワードが間違っています！</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>まず登録してください！</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>使い方: /login <パスワード></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>あと{attempts}回試行できます！</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>{time}秒間ブロックされました！</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>パスワードを変更しました！再度ログインしてください。</gradient>"
+    error: "<gradient:#FF0000:#8B0000>パスワードの変更に失敗しました。もう一度お試しください。</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>使い方: /changepassword <旧パスワード> <新パスワード> <新パスワード確認></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>自動ログインを有効にしました！</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>自動ログインを無効にしました！</gradient>"
+    success: "<gradient:#00FF00:#006400>自動的にログインしました</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>使い方: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>このコマンドはプレイヤーのみ使用できます！</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>権限がありません！</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>まずログインしてください！</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>設定を再読み込みしました！</gradient>"
+
+ko_kr:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>사용법: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>성공적으로 등록하고 로그인했습니다!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>비밀번호가 일치하지 않습니다!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>비밀번호는 최소 {min_length}자 이상이어야 합니다!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>사용법: /register <비밀번호> <비밀번호 확인></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>이미 등록되어 있습니다!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>성공적으로 로그인했습니다!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>잘못된 비밀번호입니다!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>먼저 등록해 주세요!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>사용법: /login <비밀번호></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>{attempts}번 더 시도할 수 있습니다!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>{time}초 동안 차단되었습니다!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>비밀번호를 성공적으로 변경했습니다! 다시 로그인해 주세요.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>비밀번호 변경에 실패했습니다. 다시 시도해 주세요.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>사용법: /changepassword <기존 비밀번호> <새 비밀번호> <새 비밀번호 확인></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>자동 로그인이 활성화되었습니다!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>자동 로그인이 비활성화되었습니다!</gradient>"
+    success: "<gradient:#00FF00:#006400>자동으로 로그인되었습니다</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>사용법: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>이 명령어는 플레이어만 사용할 수 있습니다!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>권한이 없습니다!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>먼저 로그인해 주세요!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>설정을 다시 불러왔습니다!</gradient>"
+
+it_it:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Uso: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Registrazione e login effettuati con successo!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Le password non corrispondono!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>La password deve essere di almeno {min_length} caratteri!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /register <password> <ripeti password></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Sei già registrato!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Login effettuato con successo!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Password errata!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Devi prima registrarti!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /login <password></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>Hai ancora {attempts} tentativi prima del blocco!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>Sei bloccato per {time} secondi!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Password cambiata con successo! Per favore effettua di nuovo il login.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Errore nel cambiamento della password. Per favore riprova.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /changepassword <Vecchia password> <Nuova password> <Ripeti nuova password></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Login automatico attivato!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Login automatico disattivato!</gradient>"
+    success: "<gradient:#00FF00:#006400>Login automatico effettuato</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Uso: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Questo comando è solo per i giocatori!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>Non hai il permesso!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Devi prima effettuare il login!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Configurazione ricaricata con successo!</gradient>"
+
+tr_tr:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Kullanım: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Başarıyla kayıt oldunuz ve giriş yaptınız!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Şifreler uyuşmuyor!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>Şifre en az {min_length} karakter olmalıdır!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Kullanım: /register <şifre> <şifre tekrar></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Zaten kayıtlısınız!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Başarıyla giriş yaptınız!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Yanlış şifre!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Önce kayıt olmalısınız!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Kullanım: /login <şifre></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>Engellenmeden önce {attempts} deneme hakkınız kaldı!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>{time} saniye boyunca engellendiniz!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Şifre başarıyla değiştirildi! Lütfen tekrar giriş yapın.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Şifre değiştirilemedi. Lütfen tekrar deneyin.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Kullanım: /changepassword <Eski şifre> <Yeni şifre> <Yeni şifre tekrar></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Otomatik giriş etkinleştirildi!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Otomatik giriş devre dışı bırakıldı!</gradient>"
+    success: "<gradient:#00FF00:#006400>Otomatik olarak giriş yapıldı</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Kullanım: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Bu komut sadece oyuncular içindir!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>Yetkiniz yok!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Önce giriş yapmalısınız!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Yapılandırma başarıyla yeniden yüklendi!</gradient>"
+pl_pl:
+  prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
+  ralp:
+    usage: "<gradient:#FF0000:#8B0000>Użycie: /ralp reload</gradient>"
+  register:
+    success: "<gradient:#00FF00:#006400>Pomyślnie zarejestrowano i zalogowano!</gradient>"
+    passwords-not-match: "<gradient:#FF0000:#8B0000>Hasła nie pasują do siebie!</gradient>"
+    too-short: "<gradient:#FF0000:#8B0000>Hasło musi mieć co najmniej {min_length} znaków!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Użycie: /register <hasło> <powtórz hasło></gradient>"
+    already-registered: "<gradient:#FF0000:#8B0000>Jesteś już zarejestrowany!</gradient>"
+  login:
+    success: "<gradient:#00FF00:#006400>Pomyślnie zalogowano!</gradient>"
+    wrong-password: "<gradient:#FF0000:#8B0000>Nieprawidłowe hasło!</gradient>"
+    not-registered: "<gradient:#FF0000:#8B0000>Najpierw się zarejestruj!</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Użycie: /login <hasło></gradient>"
+    attempts-left: "<gradient:#FF0000:#8B0000>Pozostało {attempts} prób przed zablokowaniem!</gradient>"
+    blocked: "<gradient:#FF0000:#8B0000>Zostałeś zablokowany na {time} sekund!</gradient>"
+  changepassword:
+    success: "<gradient:#00FF00:#006400>Hasło zostało zmienione! Zaloguj się ponownie.</gradient>"
+    error: "<gradient:#FF0000:#8B0000>Nie udało się zmienić hasła. Spróbuj ponownie.</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Użycie: /changepassword <Stare hasło> <Nowe hasło> <Powtórz nowe hasło></gradient>"
+  autologin:
+    enabled: "<gradient:#00FF00:#006400>Automatyczne logowanie włączone!</gradient>"
+    disabled: "<gradient:#FF0000:#8B0000>Automatyczne logowanie wyłączone!</gradient>"
+    success: "<gradient:#00FF00:#006400>Zostałeś automatycznie zalogowany</gradient>"
+    usage: "<gradient:#FFD700:#FFA500>Użycie: /autologin <on|off></gradient>"
+  errors:
+    player-only: "<gradient:#FF0000:#8B0000>Ta komenda jest tylko dla graczy!</gradient>"
+    no-permission: "<gradient:#FF0000:#8B0000>Nie masz uprawnień!</gradient>"
+    not-logged-in: "<gradient:#FF0000:#8B0000>Najpierw się zaloguj!</gradient>"
+  commands:
+    reload-success: "<gradient:#00FF00:#006400>Konfiguracja przeładowana pomyślnie!</gradient>"
