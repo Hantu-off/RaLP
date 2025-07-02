@@ -18,6 +18,20 @@ public class PasswordManager {
         return config.contains("players." + player.getUniqueId() + ".password");
     }
 
+    public boolean isPlayerRegistered(String playerName) {
+        if (config.getConfigurationSection("players") == null) {
+            return false;
+        }
+
+        for (String uuidStr : config.getConfigurationSection("players").getKeys(false)) {
+            String storedName = config.getString("players." + uuidStr + ".name");
+            if (playerName.equalsIgnoreCase(storedName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean hasPassword(UUID playerId) {
         return config.contains("players." + playerId + ".password");
     }
@@ -45,6 +59,7 @@ public class PasswordManager {
 
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
             config.set("players." + uuid + ".password", hash);
+            config.set("players." + uuid + ".name", player.getName());
             plugin.saveConfig();
             return true;
         } catch (Exception e) {
@@ -64,6 +79,21 @@ public class PasswordManager {
         } catch (Exception e) {
             plugin.getLogger().severe("Password change error: " + e.getMessage());
             return false;
+        }
+    }
+
+    public void unregisterPlayer(String playerName) {
+        if (config.getConfigurationSection("players") == null) {
+            return;
+        }
+
+        for (String uuidStr : config.getConfigurationSection("players").getKeys(false)) {
+            String storedName = config.getString("players." + uuidStr + ".name");
+            if (playerName.equalsIgnoreCase(storedName)) {
+                config.set("players." + uuidStr, null);
+                plugin.saveConfig();
+                break;
+            }
         }
     }
 }

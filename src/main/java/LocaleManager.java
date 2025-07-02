@@ -1,5 +1,8 @@
 package net.hantu.ralp;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
@@ -10,10 +13,18 @@ public class LocaleManager {
     private final Main plugin;
     private Map<String, Map<String, String>> messages;
     private String defaultLanguage;
+    private final MiniMessage miniMessage;
+    private final LegacyComponentSerializer legacySerializer;
 
     public LocaleManager(Main plugin) {
         this.plugin = plugin;
         this.messages = new HashMap<>();
+        this.miniMessage = MiniMessage.miniMessage();
+        this.legacySerializer = LegacyComponentSerializer.builder()
+                .character('§')
+                .hexColors()
+                .useUnusualXRepeatedCharacterHexFormat()
+                .build();
         loadMessages();
         this.defaultLanguage = plugin.getConfig().getString("settings.default-language", "en_us");
         plugin.getLogger().info("Selected language: " + defaultLanguage);
@@ -32,7 +43,13 @@ public class LocaleManager {
             for (String lang : config.getKeys(false)) {
                 Map<String, String> langMessages = new HashMap<>();
                 for (String key : config.getConfigurationSection(lang).getKeys(true)) {
-                    langMessages.put(key, config.getString(lang + "." + key));
+                    String message = config.getString(lang + "." + key);
+                    if (message != null) {
+                        // Заменяем старые цветовые коды на MiniMessage формат
+                        message = message.replace("§", "<dark_gray>")
+                                .replace("&", "");
+                        langMessages.put(key, message);
+                    }
                 }
                 messages.put(lang, langMessages);
             }
@@ -41,6 +58,16 @@ public class LocaleManager {
             Map<String, String> fallback = new HashMap<>();
             fallback.put("errors.player-only", "This command is for players only!");
             messages.put("en_us", fallback);
+        }
+    }
+
+    public Component getMessageComponent(String key) {
+        String message = getMessage(key);
+        try {
+            return miniMessage.deserialize(message);
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to parse message with key '" + key + "': " + e.getMessage());
+            return Component.text(message);
         }
     }
 

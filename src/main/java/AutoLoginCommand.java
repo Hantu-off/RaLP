@@ -1,5 +1,6 @@
 package net.hantu.ralp;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,24 +16,32 @@ public class AutoLoginCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.getLocaleManager().getMessage("errors.player-only"));
+            plugin.adventure().sender(sender).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("errors.player-only")
+            );
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length != 1) {
-            player.sendMessage(plugin.getLocaleManager().getMessage("autologin.usage"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("autologin.usage")
+            );
             return true;
         }
 
         boolean enable;
         if (args[0].equalsIgnoreCase("on")) {
             enable = true;
+            plugin.adventure().sender(sender).sendMessage(plugin.getLocaleManager().getMessageComponent("autologin.enabled"));
         } else if (args[0].equalsIgnoreCase("off")) {
             enable = false;
+            plugin.adventure().sender(sender).sendMessage(plugin.getLocaleManager().getMessageComponent("autologin.disabled"));
         } else {
-            player.sendMessage(plugin.getLocaleManager().getMessage("autologin.usage"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("autologin.usage")
+            );
             return true;
         }
 

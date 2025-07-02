@@ -1,5 +1,7 @@
 package net.hantu.ralp;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.title.Title;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -17,6 +19,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.metadata.FixedMetadataValue;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -99,9 +102,11 @@ public class AuthListener implements Listener {
 
         if (unauthenticatedPlayers.containsKey(uuid)) {
             String msg = event.getMessage().toLowerCase();
-            if (!(msg.startsWith("/login") || msg.startsWith("/register") || msg.startsWith("/r ") || msg.startsWith("/l "))) {
+            if (!(msg.startsWith("/login") || msg.startsWith("/register") || msg.startsWith("/reg ") || msg.startsWith("/l "))) {
                 event.setCancelled(true);
-                player.sendMessage(plugin.getLocaleManager().getMessage("errors.not-logged-in"));
+                plugin.adventure().player(player).sendMessage(
+                        plugin.getLocaleManager().getMessageComponent("errors.not-logged-in")
+                );
             }
         }
     }
@@ -144,12 +149,36 @@ public class AuthListener implements Listener {
     public void showAuthMessage(Player player) {
         if (!player.isOnline()) return;
 
-        String message = plugin.getPasswordManager().isPlayerRegistered(player)
-                ? plugin.getLocaleManager().getMessage("login.usage")
-                : plugin.getLocaleManager().getMessage("register.usage");
+        String messageKey = plugin.getPasswordManager().isPlayerRegistered(player)
+                ? "login.usage"
+                : "register.usage";
 
-        player.sendMessage(message);
-        player.sendTitle("", message, 10, 70, 20);
+        Component message = plugin.getLocaleManager().getMessageComponent(messageKey);
+        plugin.adventure().player(player).sendMessage(message);
+
+        Title title = Title.title(
+                Component.empty(),
+                message,
+                Title.Times.times(
+                        Duration.ofMillis(500),
+                        Duration.ofMillis(3500),
+                        Duration.ofMillis(1000)
+                )
+        );
+        plugin.adventure().player(player).showTitle(title);
+
+        // Воспроизводим звук, если он включен в конфигурации
+        if (plugin.getConfig().getBoolean("settings.sound.enabled", true)) {
+            String soundName = plugin.getConfig().getString("settings.sound.name", "entity.ghast.ambient");
+            float volume = (float) plugin.getConfig().getDouble("settings.sound.volume", 1.0);
+            float pitch = (float) plugin.getConfig().getDouble("settings.sound.pitch", 1.0);
+
+            try {
+                player.playSound(player.getLocation(), soundName, volume, pitch);
+            } catch (Exception e) {
+                plugin.getLogger().warning("Failed to play sound '" + soundName + "': " + e.getMessage());
+            }
+        }
     }
 
     public void restorePlayerState(Player player) {

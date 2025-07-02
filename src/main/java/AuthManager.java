@@ -50,7 +50,9 @@ public class AuthManager {
 
         if (savedData != null && savedData.equals(currentIp)) {
             setAuthenticated(uuid, true);
-            player.sendMessage(plugin.getLocaleManager().getMessage("autologin.success"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("autologin.success")
+            );
             plugin.getLogger().info(player.getName() + " auto-logged in from " + currentIp);
             return true;
         }
@@ -66,10 +68,8 @@ public class AuthManager {
             }
             String ip = player.getAddress().getAddress().getHostAddress();
             autoLoginData.put(uuid, ip);
-            player.sendMessage(plugin.getLocaleManager().getMessage("autologin.enabled"));
         } else {
             autoLoginData.remove(uuid);
-            player.sendMessage(plugin.getLocaleManager().getMessage("autologin.disabled"));
         }
         saveAutoLoginData();
     }
@@ -93,5 +93,14 @@ public class AuthManager {
             loggedInPlayers.remove(playerId);
             autoLoginData.remove(playerId);
         }
+    }
+
+    public void logout(Player player) {
+        UUID uuid = player.getUniqueId();
+        setAuthenticated(uuid, false);
+        sessions.remove(uuid);
+        loggedInPlayers.remove(uuid);
+        autoLoginData.remove(uuid);
+        saveAutoLoginData();
     }
 }

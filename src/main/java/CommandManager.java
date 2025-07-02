@@ -12,13 +12,17 @@ public class CommandManager implements TabCompleter {
     public CommandManager(Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("register").setExecutor(new RegisterCommand(plugin));
-        plugin.getCommand("r").setExecutor(new RegisterCommand(plugin));
         plugin.getCommand("login").setExecutor(new LoginCommand(plugin));
         plugin.getCommand("l").setExecutor(new LoginCommand(plugin));
         plugin.getCommand("autologin").setExecutor(new AutoLoginCommand(plugin));
         plugin.getCommand("changepassword").setExecutor(new ChangePasswordCommand(plugin));
         plugin.getCommand("ralp").setExecutor(new RalpCommand(plugin));
         plugin.getCommand("ralp").setTabCompleter(this);
+
+        UnregCommand unregCommand = new UnregCommand(plugin);
+        plugin.getCommand("unreg").setExecutor(unregCommand);
+        plugin.getCommand("unreg").setTabCompleter(unregCommand);
+
         plugin.getServer().getPluginManager().registerEvents(plugin.getAuthListener(), plugin);
     }
 

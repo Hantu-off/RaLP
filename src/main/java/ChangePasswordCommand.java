@@ -1,5 +1,6 @@
 package net.hantu.ralp;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,39 +16,53 @@ public class ChangePasswordCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.getLocaleManager().getMessage("errors.player-only"));
+            plugin.adventure().sender(sender).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("errors.player-only")
+            );
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length != 3) {
-            player.sendMessage(plugin.getLocaleManager().getMessage("changepassword.usage"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("changepassword.usage")
+            );
             return true;
         }
 
         if (!plugin.getPasswordManager().isPlayerRegistered(player)) {
-            player.sendMessage(plugin.getLocaleManager().getMessage("login.not-registered"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("login.not-registered")
+            );
             return true;
         }
 
         if (!args[1].equals(args[2])) {
-            player.sendMessage(plugin.getLocaleManager().getMessage("register.passwords-not-match"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("register.passwords-not-match")
+            );
             return true;
         }
 
         if (!plugin.getPasswordManager().verifyPassword(player, args[0])) {
-            player.sendMessage(plugin.getLocaleManager().getMessage("login.wrong-password"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("login.wrong-password")
+            );
             return true;
         }
 
         if (plugin.getPasswordManager().changePassword(player, args[1])) {
             plugin.getAuthManager().setAuthenticated(player.getUniqueId(), false);
-            player.sendMessage(plugin.getLocaleManager().getMessage("changepassword.success"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("changepassword.success")
+            );
             return true;
         }
 
-        player.sendMessage(plugin.getLocaleManager().getMessage("changepassword.error"));
+        plugin.adventure().player(player).sendMessage(
+                plugin.getLocaleManager().getMessageComponent("changepassword.error")
+        );
         return false;
     }
 }

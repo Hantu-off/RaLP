@@ -1,5 +1,6 @@
 package net.hantu.ralp;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,24 +16,32 @@ public class LoginCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.getLocaleManager().getMessage("errors.player-only"));
+            plugin.adventure().sender(sender).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("errors.player-only")
+            );
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length != 1) {
-            player.sendMessage(plugin.getLocaleManager().getMessage("login.usage"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("login.usage")
+            );
             return true;
         }
 
         if (plugin.getPasswordManager().processLogin(player, args[0])) {
             plugin.getAuthListener().markAsAuthenticated(player);
-            player.sendMessage(plugin.getLocaleManager().getMessage("login.success"));
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("login.success")
+            );
             return true;
         }
 
-        player.sendMessage(plugin.getLocaleManager().getMessage("login.wrong-password"));
+        plugin.adventure().player(player).sendMessage(
+                plugin.getLocaleManager().getMessageComponent("login.wrong-password")
+        );
         return false;
     }
 }
