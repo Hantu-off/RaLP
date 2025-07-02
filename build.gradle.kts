@@ -15,6 +15,9 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21.6-R0.1-SNAPSHOT")
     implementation("org.mindrot:jbcrypt:0.4")
+    implementation("net.kyori:adventure-api:4.15.0")
+    implementation("net.kyori:adventure-text-minimessage:4.15.0")
+    implementation("net.kyori:adventure-platform-bukkit:4.3.2")
 }
 
 java {
@@ -31,5 +34,6 @@ tasks {
     shadowJar {
         archiveFileName.set("RaLP-${version}.jar")
         relocate("org.mindrot.jbcrypt", "net.hantu.ralp.libs.jbcrypt")
+        relocate("net.kyori", "net.hantu.ralp.libs.kyori")
     }
 }
