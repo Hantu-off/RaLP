@@ -1,5 +1,6 @@
 package ru.hantu.ralp;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,16 +15,13 @@ public class RegisterCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             plugin.adventure().sender(sender).sendMessage(
                     plugin.getLocaleManager().getMessageComponent("errors.player-only")
             );
             return true;
         }
 
-        Player player = (Player) sender;
-
-        // Проверяем, не зарегистрирован ли уже игрок
         if (plugin.getPasswordManager().isPlayerRegistered(player)) {
             plugin.adventure().player(player).sendMessage(
                     plugin.getLocaleManager().getMessageComponent("register.already-registered")

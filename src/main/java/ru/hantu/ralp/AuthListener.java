@@ -19,6 +19,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.metadata.FixedMetadataValue;
+
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,20 +40,21 @@ public class AuthListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
-        // Сохраняем предыдущий режим игры
-        player.setMetadata("previousGamemode", new FixedMetadataValue(plugin, player.getGameMode()));
+        if (plugin.getAuthManager().hasActiveSession(uuid)) {
+            plugin.getAuthListener().restorePlayerState(player);
+            unauthenticatedPlayers.remove(uuid);
+            return;
+        }
 
-        // Устанавливаем режим наблюдателя и слепоту
+        GameMode actualGamemode = player.getGameMode();
+        player.setMetadata("previousGamemode", new FixedMetadataValue(plugin, actualGamemode));
+
         player.setGameMode(GameMode.SPECTATOR);
         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 255, false, false));
 
-        // Пробуем авто-вход
         if (plugin.getAuthManager().tryAutoLogin(player)) {
-            // Если авто-вход успешен, сразу восстанавливаем состояние
-            restorePlayerState(player);
             unauthenticatedPlayers.remove(uuid);
         } else {
-            // Если авто-вход не сработал, добавляем в список неавторизованных и показываем сообщение
             unauthenticatedPlayers.put(uuid, System.currentTimeMillis());
             showAuthMessage(player);
         }
@@ -67,7 +69,7 @@ public class AuthListener implements Listener {
             Location from = event.getFrom();
             Location to = event.getTo();
 
-            if (to != null && (from.getX() != to.getX() || from.getY() != to.getY() || from.getZ() != to.getZ())) {
+            if (to != null && !from.toVector().equals(to.toVector())) {
                 event.setTo(from);
 
                 long currentTime = System.currentTimeMillis();
@@ -113,8 +115,7 @@ public class AuthListener implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
+        if (event.getEntity() instanceof Player player) {
             if (unauthenticatedPlayers.containsKey(player.getUniqueId())) {
                 event.setCancelled(true);
             }
@@ -138,8 +139,7 @@ public class AuthListener implements Listener {
 
     @EventHandler
     public void onEntityTarget(EntityTargetEvent event) {
-        if (event.getTarget() instanceof Player) {
-            Player player = (Player) event.getTarget();
+        if (event.getTarget() instanceof Player player) {
             if (unauthenticatedPlayers.containsKey(player.getUniqueId())) {
                 event.setCancelled(true);
             }
@@ -159,15 +159,10 @@ public class AuthListener implements Listener {
         Title title = Title.title(
                 Component.empty(),
                 message,
-                Title.Times.times(
-                        Duration.ofMillis(500),
-                        Duration.ofMillis(3500),
-                        Duration.ofMillis(1000)
-                )
+                Title.Times.times(Duration.ofMillis(500), Duration.ofMillis(3500), Duration.ofMillis(1000))
         );
         plugin.adventure().player(player).showTitle(title);
 
-        // Воспроизводим звук, если он включен в конфигурации
         if (plugin.getConfig().getBoolean("settings.sound.enabled", true)) {
             String soundName = plugin.getConfig().getString("settings.sound.name", "entity.ghast.ambient");
             float volume = (float) plugin.getConfig().getDouble("settings.sound.volume", 1.0);
@@ -183,14 +178,7 @@ public class AuthListener implements Listener {
 
     public void restorePlayerState(Player player) {
         player.removePotionEffect(PotionEffectType.BLINDNESS);
-
-        if (player.hasMetadata("previousGamemode")) {
-            GameMode previousMode = (GameMode) player.getMetadata("previousGamemode").get(0).value();
-            player.setGameMode(previousMode);
-            player.removeMetadata("previousGamemode", plugin);
-        } else {
-            player.setGameMode(GameMode.SURVIVAL);
-        }
+        player.setGameMode(GameMode.SURVIVAL);
     }
 
     public void markAsAuthenticated(Player player) {
@@ -198,5 +186,8 @@ public class AuthListener implements Listener {
         unauthenticatedPlayers.remove(uuid);
         messageCooldowns.remove(uuid);
         restorePlayerState(player);
+    }
+    public boolean isAuthenticated(Player player) {
+        return !unauthenticatedPlayers.containsKey(player.getUniqueId());
     }
 }
