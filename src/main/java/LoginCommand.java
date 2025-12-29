@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import java.util.UUID;
 
 public class LoginCommand implements CommandExecutor {
     private final Main plugin;
@@ -15,14 +16,22 @@ public class LoginCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             plugin.adventure().sender(sender).sendMessage(
                     plugin.getLocaleManager().getMessageComponent("errors.player-only")
             );
             return true;
         }
 
-        Player player = (Player) sender;
+        UUID uuid = player.getUniqueId();
+
+        if (!plugin.getAuthListener().isAuthenticated(player)) {
+        } else {
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("login.already-logged-in")
+            );
+            return true;
+        }
 
         if (args.length != 1) {
             plugin.adventure().player(player).sendMessage(
@@ -31,17 +40,36 @@ public class LoginCommand implements CommandExecutor {
             return true;
         }
 
-        if (plugin.getPasswordManager().processLogin(player, args[0])) {
-            plugin.getAuthListener().markAsAuthenticated(player);
+        if (plugin.getAuthManager().isBlocked(uuid)) {
+            long remaining = plugin.getAuthManager().getBlockedUntil(uuid) - System.currentTimeMillis();
+            long seconds = (remaining + 999) / 1000;
+            String message = plugin.getLocaleManager().getMessage("login.blocked-time")
+                    .replace("{time}", String.valueOf(seconds));
             plugin.adventure().player(player).sendMessage(
-                    plugin.getLocaleManager().getMessageComponent("login.success")
+                    plugin.getLocaleManager().getMiniMessage().deserialize(message)
             );
             return true;
         }
 
-        plugin.adventure().player(player).sendMessage(
-                plugin.getLocaleManager().getMessageComponent("login.wrong-password")
-        );
-        return false;
+        // Проверяем пароль
+        if (plugin.getPasswordManager().verifyPassword(player, args[0])) {
+            plugin.getAuthManager().setAuthenticated(uuid, true);
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("login.success")
+            );
+            return true;
+        } else {
+            plugin.getAuthManager().recordFailedAttempt(uuid);
+            if (plugin.getAuthManager().isBlocked(uuid)) {
+                plugin.adventure().player(player).sendMessage(
+                        plugin.getLocaleManager().getMessageComponent("login.blocked")
+                );
+            } else {
+                plugin.adventure().player(player).sendMessage(
+                        plugin.getLocaleManager().getMessageComponent("login.wrong-password")
+                );
+            }
+            return false;
+        }
     }
 }

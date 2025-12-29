@@ -1,5 +1,5 @@
 name: RaLP
-version: 0.7.1
+version: 0.7.2
 main: net.hantu.ralp.Main
 api-version: "1.21"
 permissions:
