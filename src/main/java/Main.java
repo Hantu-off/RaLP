@@ -71,7 +71,6 @@ public class Main extends JavaPlugin {
                             String latestVersion = latest.getString("version_number");
                             String currentVersion = getDescription().getVersion();
 
-                            // Убираем префиксы вроде "1.21.x-" если есть
                             String cleanCurrent = currentVersion.replaceFirst(".*-", "");
                             String cleanLatest = latestVersion.replaceFirst(".*-", "");
 
@@ -87,7 +86,6 @@ public class Main extends JavaPlugin {
                     }
                 }
             } catch (Exception e) {
-                // Не критично — просто молча пропускаем
             }
         });
     }
@@ -152,3 +150,4 @@ public class Main extends JavaPlugin {
     public BukkitAudiences adventure() { return adventure; }
     public Map<UUID, AuthState> getAuthStates() { return authStates; }
 }
+
