@@ -1,7 +1,14 @@
 package net.hantu.ralp;
 
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -42,6 +49,47 @@ public class Main extends JavaPlugin {
 
         new CommandManager(this);
         getServer().getPluginManager().registerEvents(authListener, this);
+        checkForUpdates();
+    }
+
+    private void checkForUpdates() {
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            try {
+                URL url = new URL("https://api.modrinth.com/v2/project/ralp/version");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("User-Agent", "RaLP-Plugin/1.0");
+                conn.setConnectTimeout(5000);
+                conn.setReadTimeout(5000);
+
+                if (conn.getResponseCode() == 200) {
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                        String json = reader.lines().collect(java.util.stream.Collectors.joining());
+                        JSONArray versions = new JSONArray(json);
+                        if (!versions.isEmpty()) {
+                            JSONObject latest = versions.getJSONObject(0);
+                            String latestVersion = latest.getString("version_number");
+                            String currentVersion = getDescription().getVersion();
+
+                            // Убираем префиксы вроде "1.21.x-" если есть
+                            String cleanCurrent = currentVersion.replaceFirst(".*-", "");
+                            String cleanLatest = latestVersion.replaceFirst(".*-", "");
+
+                            if (!cleanCurrent.equals(cleanLatest)) {
+                                getLogger().warning("============================================");
+                                getLogger().warning("NEW VERSION OF RaLP IS AVAILABLE!");
+                                getLogger().warning("Your version: " + currentVersion);
+                                getLogger().warning("Latest version: " + latestVersion);
+                                getLogger().warning("Download: https://modrinth.com/plugin/ralp#download");
+                                getLogger().warning("============================================");
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                // Не критично — просто молча пропускаем
+            }
+        });
     }
 
     private void setupDefaultConfigWithAutoLanguage() {
