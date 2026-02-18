@@ -6,20 +6,17 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.*;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -30,6 +27,7 @@ public class AuthListener implements Listener {
     private final Main plugin;
     private final Map<UUID, Long> unauthenticatedPlayers = new HashMap<>();
     private final Map<UUID, Long> messageCooldowns = new HashMap<>();
+    private final Map<UUID, Location> spawnLocations = new HashMap<>();
     private static final long MESSAGE_COOLDOWN = 5000;
 
     public AuthListener(Main plugin) {
@@ -41,9 +39,12 @@ public class AuthListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
+        spawnLocations.put(uuid, player.getLocation());
+
         if (plugin.getAuthManager().hasActiveSession(uuid)) {
-            plugin.getAuthListener().restorePlayerState(player);
+            restorePlayerState(player);
             unauthenticatedPlayers.remove(uuid);
+            spawnLocations.remove(uuid);
             return;
         }
 
@@ -54,7 +55,9 @@ public class AuthListener implements Listener {
         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 255, false, false));
 
         if (plugin.getAuthManager().tryAutoLogin(player)) {
+            teleportToSpawn(player);
             unauthenticatedPlayers.remove(uuid);
+            spawnLocations.remove(uuid);
         } else {
             unauthenticatedPlayers.put(uuid, System.currentTimeMillis());
             showAuthMessage(player);
@@ -62,24 +65,58 @@ public class AuthListener implements Listener {
     }
 
     @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        UUID uuid = event.getPlayer().getUniqueId();
+        unauthenticatedPlayers.remove(uuid);
+        messageCooldowns.remove(uuid);
+        spawnLocations.remove(uuid);
+    }
+
+    @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
-        if (unauthenticatedPlayers.containsKey(uuid)) {
-            Location from = event.getFrom();
-            Location to = event.getTo();
+        if (!unauthenticatedPlayers.containsKey(uuid)) {
+            return;
+        }
 
-            if (to != null && !from.toVector().equals(to.toVector())) {
-                event.setTo(from);
+        Location spawn = spawnLocations.get(uuid);
+        if (spawn == null) {
+            return;
+        }
 
-                long currentTime = System.currentTimeMillis();
-                Long lastMessageTime = messageCooldowns.get(uuid);
+        Location to = event.getTo();
+        if (to == null) return;
 
-                if (lastMessageTime == null || currentTime - lastMessageTime >= MESSAGE_COOLDOWN) {
-                    showAuthMessage(player);
-                    messageCooldowns.put(uuid, currentTime);
-                }
+        if (Math.abs(to.getX() - spawn.getX()) > 0.01 ||
+                Math.abs(to.getY() - spawn.getY()) > 0.01 ||
+                Math.abs(to.getZ() - spawn.getZ()) > 0.01) {
+
+            event.setTo(new Location(
+                    spawn.getWorld(),
+                    spawn.getX(),
+                    spawn.getY(),
+                    spawn.getZ(),
+                    to.getYaw(),
+                    to.getPitch()
+            ));
+        }
+    }
+
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        Player player = event.getPlayer();
+        UUID uuid = player.getUniqueId();
+
+        if (!unauthenticatedPlayers.containsKey(uuid)) {
+            return;
+        }
+
+        if (event.getCause() == PlayerTeleportEvent.TeleportCause.SPECTATE) {
+            Location spawn = spawnLocations.get(uuid);
+            if (spawn != null) {
+                event.setTo(spawn);
             }
         }
     }
@@ -98,14 +135,15 @@ public class AuthListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onCommand(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
         if (unauthenticatedPlayers.containsKey(uuid)) {
-            String msg = event.getMessage().toLowerCase();
-            if (!(msg.startsWith("/login") || msg.startsWith("/register") || msg.startsWith("/reg ") || msg.startsWith("/l "))) {
+            String msg = event.getMessage().toLowerCase().trim();
+            if (!(msg.startsWith("/login") || msg.startsWith("/register") ||
+                    msg.startsWith("/changepassword") || msg.startsWith("/help"))) {
                 event.setCancelled(true);
                 plugin.adventure().player(player).sendMessage(
                         plugin.getLocaleManager().getMessageComponent("errors.not-logged-in")
@@ -182,24 +220,42 @@ public class AuthListener implements Listener {
         player.setGameMode(GameMode.SURVIVAL);
     }
 
+    private void teleportToSpawn(Player player) {
+        Location spawn = spawnLocations.get(player.getUniqueId());
+        if (spawn != null) {
+            player.teleport(spawn);
+        }
+    }
+
+    @EventHandler
+    public void onGameModeChange(PlayerGameModeChangeEvent event) {
+        Player player = event.getPlayer();
+        if (unauthenticatedPlayers.containsKey(player.getUniqueId())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+        if (unauthenticatedPlayers.containsKey(player.getUniqueId())) {
+            event.setCancelled(true);
+            plugin.adventure().player(player).sendMessage(
+                    plugin.getLocaleManager().getMessageComponent("errors.not-logged-in")
+            );
+        }
+    }
+
     public void markAsAuthenticated(Player player) {
+        teleportToSpawn(player);
         UUID uuid = player.getUniqueId();
         unauthenticatedPlayers.remove(uuid);
         messageCooldowns.remove(uuid);
+        spawnLocations.remove(uuid);
         restorePlayerState(player);
     }
+
     public boolean isAuthenticated(Player player) {
         return !unauthenticatedPlayers.containsKey(player.getUniqueId());
-    }
-
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-        String cmd = event.getMessage().toLowerCase();
-        if (cmd.startsWith("/login") || cmd.startsWith("/l ") ||
-                cmd.startsWith("/register") || cmd.startsWith("/reg ") ||
-                cmd.startsWith("/changepassword")) {
-
-            event.setMessage("/ralp [hidden]");
-        }
     }
 }
