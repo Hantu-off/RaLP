@@ -1,7 +1,6 @@
-package net.hantu.ralp;
+package ru.hantu.ralp;
 
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.JSONArray;
 import org.json.JSONObject;

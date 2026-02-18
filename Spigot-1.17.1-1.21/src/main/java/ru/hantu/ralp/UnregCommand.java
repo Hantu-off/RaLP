@@ -1,4 +1,4 @@
-package net.hantu.ralp;
+package ru.hantu.ralp;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;

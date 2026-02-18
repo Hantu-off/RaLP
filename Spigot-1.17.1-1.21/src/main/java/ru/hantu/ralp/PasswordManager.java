@@ -1,4 +1,4 @@
-package net.hantu.ralp;
+package ru.hantu.ralp;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;

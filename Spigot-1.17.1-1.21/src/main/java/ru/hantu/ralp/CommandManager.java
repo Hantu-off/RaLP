@@ -1,4 +1,4 @@
-package net.hantu.ralp;
+package ru.hantu.ralp;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

@@ -1,6 +1,6 @@
 name: RaLP
 version: 0.7.3
-main: net.hantu.ralp.Main
+main: ru.hantu.ralp.Main
 api-version: "1.17"
 author: Hantu
 description: RaLP - Register and Login Plugin
