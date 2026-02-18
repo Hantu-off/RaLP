@@ -1,0 +1,39 @@
+name: RaLP
+version: 0.7.3
+main: net.hantu.ralp.Main
+api-version: "1.17"
+author: Hantu
+description: RaLP - Register and Login Plugin
+prefix: RaLP Debug
+permissions:
+  ralp.admin:
+    description: "Allows to manage RaLP plugin"
+    default: op
+  ralp.unreg:
+    description: "Allows to unregister other players"
+    default: op
+commands:
+  register:
+    description: "Register new account"
+    usage: "/register <Password> <Repeat password>"
+    aliases: [reg]
+  login:
+    description: "Login to account"
+    usage: "/login <Password>"
+  l:
+    description: "Short login command"
+    usage: "/l <Password>"
+  autologin:
+    description: "Toggle auto-login"
+    usage: "/autologin <on|off>"
+  ralp:
+    description: "Plugin management"
+    usage: "/ralp reload"
+    permission: ralp.admin
+  changepassword:
+    description: "Change your password"
+    usage: "/changepassword <Old password> <New password> <Repeat new password>"
+  unreg:
+    description: "Unregister a player"
+    usage: "/unreg <player>"
+    permission: ralp.unreg
