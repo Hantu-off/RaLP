@@ -1,5 +1,5 @@
 name: RaLP
-version: 0.7.4
+version: 0.7.4.1
 main: ru.hantu.ralp.Main
 api-version: "1.17"
 author: Hantu
@@ -20,9 +20,7 @@ commands:
   login:
     description: "Login to account"
     usage: "/login <Password>"
-  l:
-    description: "Short login command"
-    usage: "/l <Password>"
+    aliases: [l]
   autologin:
     description: "Toggle auto-login"
     usage: "/autologin <on|off>"

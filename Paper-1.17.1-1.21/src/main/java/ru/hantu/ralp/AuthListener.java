@@ -142,8 +142,7 @@ public class AuthListener implements Listener {
 
         if (unauthenticatedPlayers.containsKey(uuid)) {
             String msg = event.getMessage().toLowerCase().trim();
-            if (!(msg.startsWith("/login") || msg.startsWith("/register") ||
-                    msg.startsWith("/changepassword") || msg.startsWith("/help"))) {
+            if (!(msg.startsWith("/login ") || msg.startsWith("/register ") || msg.startsWith("/l ") || msg.startsWith("/reg "))) {
                 event.setCancelled(true);
                 plugin.adventure().player(player).sendMessage(
                         plugin.getLocaleManager().getMessageComponent("errors.not-logged-in")
