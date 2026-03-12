@@ -16,7 +16,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
+import io.papermc.paper.event.player.AsyncChatEvent;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -235,7 +235,7 @@ public class AuthListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
+    public void onPlayerChat(AsyncChatEvent event) {
         Player player = event.getPlayer();
         if (unauthenticatedPlayers.containsKey(player.getUniqueId())) {
             event.setCancelled(true);
