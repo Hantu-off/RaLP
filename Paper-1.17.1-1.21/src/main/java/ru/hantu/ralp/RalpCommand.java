@@ -30,10 +30,6 @@ public class RalpCommand implements CommandExecutor {
             return true;
         }
 
-        if (args.length > 0 && args[0].equalsIgnoreCase("silentcmd")) {
-            return true; // Просто поглощаем команду
-        }
-
         plugin.reloadConfig();
         plugin.getLocaleManager().reload();
         plugin.adventure().sender(sender).sendMessage(
