@@ -1,7 +1,7 @@
 en_us:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Usage: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Usage: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>You have successfully registered and logged in!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Passwords do not match!</gradient>"
@@ -39,7 +39,7 @@ en_us:
 ru_ru:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Используйте: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Используйте: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Вы успешно зарегистрированы и вошли в систему!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Пароли не совпадают!</gradient>"
@@ -77,7 +77,7 @@ ru_ru:
 de_de:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Verwendung: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Verwendung: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Sie haben sich erfolgreich registriert und sind eingeloggt!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Passwörter stimmen nicht überein!</gradient>"
@@ -110,7 +110,7 @@ de_de:
 es_es:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Uso: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Uso: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>¡Te has registrado e iniciado sesión correctamente!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>¡Las contraseñas no coinciden!</gradient>"
@@ -143,7 +143,7 @@ es_es:
 pt_pt:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Utilização: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Utilização: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Registo e login efetuados com sucesso!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>As palavras-passe não coincidem!</gradient>"
@@ -176,7 +176,7 @@ pt_pt:
 fr_fr:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Utilisation : /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Utilisation : /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Inscription et connexion réussies !</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Les mots de passe ne correspondent pas !</gradient>"
@@ -209,7 +209,7 @@ fr_fr:
 zh_cn:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>用法: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>用法: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>您已成功注册并登录！</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>密码不匹配！</gradient>"
@@ -242,7 +242,7 @@ zh_cn:
 ja_jp:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>使い方: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>使い方: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>登録とログインに成功しました！</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>パスワードが一致しません！</gradient>"
@@ -275,7 +275,7 @@ ja_jp:
 ko_kr:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>사용법: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>사용법: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>성공적으로 등록하고 로그인했습니다!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>비밀번호가 일치하지 않습니다!</gradient>"
@@ -308,7 +308,7 @@ ko_kr:
 it_it:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Uso: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Uso: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Registrazione e login effettuati con successo!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Le password non corrispondono!</gradient>"
@@ -341,7 +341,7 @@ it_it:
 tr_tr:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Kullanım: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Kullanım: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Başarıyla kayıt oldunuz ve giriş yaptınız!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Şifreler uyuşmuyor!</gradient>"
@@ -373,7 +373,7 @@ tr_tr:
 pl_pl:
   prefix: "<gradient:#FFD700:#FFA500>[RaLP] </gradient>"
   ralp:
-    usage: "<gradient:#FF0000:#8B0000>Użycie: /ralp reload</gradient>"
+    usage: "<gradient:#FF0000:#8B0000>Użycie: /ralp <reload|settings></gradient>"
   register:
     success: "<gradient:#00FF00:#006400>Pomyślnie zarejestrowano i zalogowano!</gradient>"
     passwords-not-match: "<gradient:#FF0000:#8B0000>Hasła nie pasują do siebie!</gradient>"
