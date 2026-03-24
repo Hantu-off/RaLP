@@ -6,7 +6,6 @@ settings:
   max-login-attempts: 3
   block-time: 60
   enable-auto-login: true
-  auto-login-ip-check: true
   session-duration: 5
   sound:
     enabled: true
