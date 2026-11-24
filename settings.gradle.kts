@@ -10,6 +10,6 @@ pluginManagement {
 
 rootProject.name = "RaLP"
 
-include("Spigot-1.17.1-1.21")
-include("Paper-1.17.1-1.21")
+include("Spigot-1.17.1-26.x")
+include("Paper-1.17.1-26.x")
 include("Forge-1.20")
